@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function v()
+        {
+            var email = document.getElementById('email').value;
+            var pass = document.getElementById('pass').value;
+            var expiryDate = document.getElementById('d').value
+            var date = new Date()
+            var d = date.getFullYear()+"-"+date.getMonth()+"-"+date.getDate();
+            console.log(d)
+            if(email=='' || pass =='' || d=='')
+            {
+                document.getElementById('emailErr').innerHTML = "enter email"
+                document.getElementById('passErr').innerHTML = "enter password"
+                document.getElementById('exp').innerHTML="enter expiry date";
+                
+            }
+            else if(email.charAt(email.length-10)!='@' || email.charAt(email.length-4)!='.')
+            {
+                document.getElementById('emailErr').innerHTML = "not vaild"
+                
+            }
+            else if(pass.length<=6)
+            {
+                document.getElementById('passErr').innerHTML = "Password must contain 10 numbers"
+            }
+            else if(expiryDate<d)
+            {
+                document.getElementById('exp').innerHTML="over";
+            }
+            else
+            {
+                document.body.innerHTML="welcome"
+            }
+     
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <h2>Login</h2>
+        <input type="email" placeholder="Enter Email" id="email" onkeyup="">
+        <div id="emailErr"></div>
+        <input type="password" placeholder="password" id="pass" onkeyup ="">
+        <div id="passErr"></div>
+        <input type="date" placeholder="Date" id="d">
+        <div id="exp"></div>
+        <input type="button" id="btn" value="Submit" onclick="v()">
+    </form>
+</body>
+</html>
+
